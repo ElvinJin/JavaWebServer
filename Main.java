@@ -1,26 +1,23 @@
-import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-
 
 public class Main {
 	
 	ServerSocket serverSocket;
-	
-	public void runServer() throws Exception{
-		
-		serverSocket = new ServerSocket(6543);
-		
-		//for accepting requests
-		acceptRequests();
-	}
-	
 	
 	//entry point
 	public static void main(String[] args) throws Exception {
 		
 		new Main().runServer(); //to avoid any problem with static fields
 		
+	}
+	
+	public void runServer() throws Exception{
+		System.out.println("Server is started...");
+		serverSocket = new ServerSocket(9876);
+		
+		//for accepting requests
+		acceptRequests();
 	}
 	
 	private void acceptRequests() throws Exception{
