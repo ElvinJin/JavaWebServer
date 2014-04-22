@@ -2,12 +2,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.logging.Logger;
 
 
 
 //this class basically handles all the connection which contains the requests
 	public class ConnectionHandler extends Thread {
-		
+		private final static Logger logger = Logger.getLogger(Main.class.getName());		
 		Socket s;
 		
 		//for sending the output to client
@@ -53,11 +54,14 @@ import java.net.Socket;
 			
 			//write the final output to pw
 			pw.write(res.response.toCharArray());
+			logger.info("Response sent to user.");
 			
 			pw.close();
 			br.close();
 			s.close();
+			logger.info("Socketed is being closed.");
 			} catch (Exception e) {
+				logger.warning("Error during handling request from user.");
 				e.printStackTrace();
 			}
 			

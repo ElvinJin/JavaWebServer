@@ -1,11 +1,13 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.logging.Logger;
 
 
 public class HTTPResponse {
 	
 	HTTPRequest req;
+	private final static Logger logger = Logger.getLogger(Main.class.getName());		
 	
 	// this is the final response
 	String response;
@@ -35,12 +37,15 @@ public class HTTPResponse {
 				response += (char) s;
 			}
 			fis.close();
+			logger.info("Successfully created response for user.");
 		} catch (FileNotFoundException e) {
 			// if we don't get file then error 404
 			response = response.replace("200", "404");
+			logger.warning("Error 404: Can't find the requested file.");
 		} catch (Exception e) {
 			// if other error the 500 internal server error
 			response = response.replace("200", "500");
+			logger.warning("Server error 500.");
 		}
 	}
 	

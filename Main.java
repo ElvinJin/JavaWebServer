@@ -1,24 +1,39 @@
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class Main {
 	
 	private final static Logger logger = Logger.getLogger(Main.class.getName());
+	private static FileHandler fh = null;
 	
 	ServerSocket serverSocket;
 	
+	public static void init(){
+		 try {
+			 fh = new FileHandler("logger.log", false);
+		 } catch (SecurityException | IOException e) {
+			 e.printStackTrace();
+		 }
+		 Logger l = Logger.getLogger("");
+		 fh.setFormatter(new SimpleFormatter());
+		 l.addHandler(fh);
+		 l.setLevel(Level.CONFIG);
+	}
+		 
 	//entry point
 	public static void main(String[] args) throws Exception {
-		
+		Main.init();
 		new Main().runServer(); //to avoid any problem with static fields
-		logger.setLevel(Level.INFO);
 	}
 	
 	public void runServer() throws Exception{
-		System.out.println("Server is started...");
-		serverSocket = new ServerSocket(9876);
+		logger.info("Server is started...");
+		serverSocket = new ServerSocket(7777);
 		
 		//for accepting requests
 		acceptRequests();
