@@ -1,7 +1,11 @@
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
+	
+	private final static Logger logger = Logger.getLogger(Main.class.getName());
 	
 	ServerSocket serverSocket;
 	
@@ -9,7 +13,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		
 		new Main().runServer(); //to avoid any problem with static fields
-		
+		logger.setLevel(Level.INFO);
 	}
 	
 	public void runServer() throws Exception{
@@ -21,6 +25,8 @@ public class Main {
 	}
 	
 	private void acceptRequests() throws Exception{
+		
+		logger.info("Server is ready to accept request.");
 		
 		while(true){ //we have to accept all the request
 			
