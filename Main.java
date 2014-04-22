@@ -24,7 +24,6 @@ public class Main {
 		
 		while(true){ //we have to accept all the request
 			
-			
 			//connection to client is in the form of socket which contain the stream for input
 			//and output
 			Socket s = serverSocket.accept();
@@ -33,7 +32,5 @@ public class Main {
 			//ch is the thread, so
 			ch.start(); // this will call the run method automatically
 		}
-		
 	}
-
 }
