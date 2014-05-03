@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.logging.Logger;
 
@@ -12,7 +11,7 @@ import java.util.logging.Logger;
 		Socket s;
 		
 		//for sending the output to client
-		PrintWriter pw;
+		DataOutputStream pw;
 		
 		//for getting the input from client
 		BufferedReader br;
@@ -23,7 +22,7 @@ import java.util.logging.Logger;
 		
 			this.s = s;
 			br = new BufferedReader(new InputStreamReader(s.getInputStream()));
-			pw = new PrintWriter(s.getOutputStream());
+			pw = new DataOutputStream(s.getOutputStream());
 		}
 		
 		//thread class contains a method run which is called automatically when we start the 
@@ -53,7 +52,7 @@ import java.util.logging.Logger;
 			HTTPResponse res = new HTTPResponse(req);
 			
 			//write the final output to pw
-			pw.write(res.response.toCharArray());
+			pw.writeBytes(res.response);
 			logger.info("Response sent to user.");
 			
 			pw.close();

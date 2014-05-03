@@ -33,7 +33,7 @@ public class Main {
 	
 	public void runServer() throws Exception{
 		logger.info("Server is started...");
-		serverSocket = new ServerSocket(7777);
+		serverSocket = new ServerSocket(8989);
 		
 		//for accepting requests
 		acceptRequests();

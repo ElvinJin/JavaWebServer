@@ -13,7 +13,7 @@ public class HTTPResponse {
 	String response;
 	
 	// root path of the server
-	String root = "/Users/pjin/Dropbox/Course Files/Sem6/CSE489/Final Project/root";
+	String root = "./root/";
 	
 	public HTTPResponse(HTTPRequest request) {
 		req = request;
@@ -26,6 +26,7 @@ public class HTTPResponse {
 			
 			response += "Server: Emir & Peng's Java Server/1.0 \r\n"; // identity of server
 			response += "Content-Type: text/html \r\n"; // response is in html format
+//			response += "Content-Disposition: attachment; filename=example2.pdf \r\n";
 			response += "Connection: close \r\n"; // 
 			response += "Content-Length: " + f.length() + " \r\n"; // length of response file
 			response += "\r\n"; // after blank line we have to append file data
