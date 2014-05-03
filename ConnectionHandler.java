@@ -55,8 +55,13 @@ import java.util.logging.Logger;
 			logger.info("Response sent to user.");
 			br.close();
 			os.close();
-			s.close();
-			logger.info("Socketed is being closed.");
+			
+//			System.out.println(req.close);
+			
+			if (req.close) {
+				s.close();
+				logger.info("Socketed is being closed.");
+			}
 			} catch (Exception e) {
 				logger.warning("Error during handling request from user.");
 				e.printStackTrace();

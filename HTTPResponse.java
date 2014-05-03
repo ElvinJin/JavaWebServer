@@ -16,59 +16,81 @@ public class HTTPResponse {
 	public HTTPResponse(HTTPRequest request, DataOutputStream os) throws IOException {
 		req = request;
 		// now we have to open the file mentioned in request
+		int authored = 0;
 		
-		try {
-			System.out.println(root + req.filename);
-			
-			File f = new File(root + req.filename);
-			
-			//to read this file
-			FileInputStream fis = new FileInputStream(f);
-			
-			os.writeBytes("HTTP/1.1 200 \r\n"); // version of http + status code 200 means it's all good
+		if (request.authorization != null) {
+			if (request.username.equals("syracuse") && request.password.equals("university")) {
+				authored = 1;
+			}
+		}
+		
+		System.out.println(authored);
+		
+		if (authored == 0){
+			//the client is not authored
+			os.writeBytes("HTTP/1.1 401 Authorization Required"); // version of http + status code 200 means it's all good
 			os.writeBytes("Server: Emir & Peng's Java Server/2.0 \r\n"); // identity of server
-			os.writeBytes("Content-Type: " + contentType(req.filename) + "\r\n"); // response is in html format
-			if (req.close) {
-				os.writeBytes("Connection: close");
-			} else {
-				os.writeBytes("Connection: keep-alive \r\n");
-			} 
-			os.writeBytes("Content-Length: " + f.length() + " \r\n"); // length of response file
-			os.writeBytes("\r\n"); // after blank line we have to append file data
+			os.writeBytes("WWW-Authenticate: Basic realm=\"Controlled space\" \r\n");
+			os.writeBytes("Content-Length: 0 \r\n"); // length of response file
 			
-			sendBytes(fis, os);
+			logger.info("Sent the authorization challenge.");
+			
+		} else {
 
-			fis.close();
+			try {
+				System.out.println(root + req.filename);
+				
+				File f = new File(root + req.filename);
+				
+				//to read this file
+				FileInputStream fis = new FileInputStream(f);
+				
+				os.writeBytes("HTTP/1.1 200 \r\n"); // version of http + status code 200 means it's all good
+				os.writeBytes("Server: Emir & Peng's Java Server/2.0 \r\n"); // identity of server
+				os.writeBytes("Content-Type: " + contentType(req.filename) + "\r\n"); // response is in html format
+				if (req.close) {
+					os.writeBytes("Connection: close");
+				} else {
+					os.writeBytes("Connection: keep-alive \r\n");
+				} 
+				os.writeBytes("Content-Length: " + f.length() + " \r\n"); // length of response file
+				os.writeBytes("\r\n"); // after blank line we have to append file data
+				
+				sendBytes(fis, os);
+
+				fis.close();
+				
+				logger.info("Successfully created response for user.");
+			} catch (FileNotFoundException e) {
+				// if we don't get file then error 404
+				String errHTML = "<!DOCTYPE html><html><head><title>File Not Found</title></head>";
+				errHTML += "<body><h1>File Not Found</h1></body></html>";
+				
+				os.writeBytes("HTTP/1.1 404 \r\n"); // version of http + status code 200 means it's all good
+				os.writeBytes("Server: Emir & Peng's Java Server/2.0 \r\n"); // identity of server
+				os.writeBytes("Content-Type: text/html \r\n"); // response is in html format
+				os.writeBytes("Connection: close");
+				os.writeBytes("Content-Length: " + errHTML.length() + " \r\n"); // length of response file
+				os.writeBytes("\r\n"); // after blank line we have to append file data
+				os.writeBytes(errHTML);
+				
+				logger.warning("Error 404: Can't find the requested file.");
+			} catch (Exception e) {
+				// if other error the 500 internal server error
+				String errHTML = "<!DOCTYPE html><html><head><title>Interner Server Error</title></head>";
+				errHTML += "<body><h1>Interner Server Error</h1></body></html>";
+				
+				os.writeBytes("HTTP/1.1 500 \r\n"); // version of http + status code 200 means it's all good
+				os.writeBytes("Server: Emir & Peng's Java Server/2.0 \r\n"); // identity of server
+				os.writeBytes("Content-Type: text/html \r\n"); // response is in html format
+				os.writeBytes("Connection: close");
+				os.writeBytes("Content-Length: " + errHTML.length() + " \r\n"); // length of response file
+				os.writeBytes("\r\n"); // after blank line we have to append file data
+				os.writeBytes(errHTML);
+				
+				logger.warning("Error 500: Interner server error.");
+			}
 			
-			logger.info("Successfully created response for user.");
-		} catch (FileNotFoundException e) {
-			// if we don't get file then error 404
-			String errHTML = "<!DOCTYPE html><html><head><title>File Not Found</title></head>";
-			errHTML += "<body><h1>File Not Found</h1></body></html>";
-			
-			os.writeBytes("HTTP/1.1 404 \r\n"); // version of http + status code 200 means it's all good
-			os.writeBytes("Server: Emir & Peng's Java Server/2.0 \r\n"); // identity of server
-			os.writeBytes("Content-Type: text/html \r\n"); // response is in html format
-			os.writeBytes("Connection: close");
-			os.writeBytes("Content-Length: " + errHTML.length() + " \r\n"); // length of response file
-			os.writeBytes("\r\n"); // after blank line we have to append file data
-			os.writeBytes(errHTML);
-			
-			logger.warning("Error 404: Can't find the requested file.");
-		} catch (Exception e) {
-			// if other error the 500 internal server error
-			String errHTML = "<!DOCTYPE html><html><head><title>Interner Server Error</title></head>";
-			errHTML += "<body><h1>Interner Server Error</h1></body></html>";
-			
-			os.writeBytes("HTTP/1.1 500 \r\n"); // version of http + status code 200 means it's all good
-			os.writeBytes("Server: Emir & Peng's Java Server/2.0 \r\n"); // identity of server
-			os.writeBytes("Content-Type: text/html \r\n"); // response is in html format
-			os.writeBytes("Connection: close");
-			os.writeBytes("Content-Length: " + errHTML.length() + " \r\n"); // length of response file
-			os.writeBytes("\r\n"); // after blank line we have to append file data
-			os.writeBytes(errHTML);
-			
-			logger.warning("Error 500: Interner server error.");
 		}
 	}
 	
