@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 		Socket s;
 		
 		//for sending the output to client
-		DataOutputStream pw;
+		DataOutputStream os;
 		
 		//for getting the input from client
 		BufferedReader br;
@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 		
 			this.s = s;
 			br = new BufferedReader(new InputStreamReader(s.getInputStream()));
-			pw = new DataOutputStream(s.getOutputStream());
+			os = new DataOutputStream(s.getOutputStream());
 		}
 		
 		//thread class contains a method run which is called automatically when we start the 
@@ -48,22 +48,18 @@ import java.util.logging.Logger;
 			
 			//now we pass the httpReq object to HTTPResponse class for getting the response
 			
-			HTTPResponse res = new HTTPResponse(req);
+			new HTTPResponse(req, os);
 			
-			//write the final output to pw
-			pw.writeBytes(res.response);
+			//write the final output to os
+			
 			logger.info("Response sent to user.");
-			
 			br.close();
-			pw.close();
+			os.close();
 			s.close();
 			logger.info("Socketed is being closed.");
 			} catch (Exception e) {
 				logger.warning("Error during handling request from user.");
 				e.printStackTrace();
 			}
-			
-		
 		}
-
 }
