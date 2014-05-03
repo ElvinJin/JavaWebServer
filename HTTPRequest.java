@@ -12,7 +12,7 @@ public class HTTPRequest {
 	//we have to create a constructor that accepts a string
 	public HTTPRequest( String request ){
 		//now we have the request only 1at line is important to us
-		String lines[] = request.split("\n"); // get all the lines of request separatly
+		String lines[] = request.split("\n"); // get all the lines of request separately
 		filename = lines[0].split(" ")[1]; //get the filename
 		logger.info("Successfully parsed the request from user.");
 	}

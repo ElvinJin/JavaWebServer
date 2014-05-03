@@ -1,4 +1,3 @@
-import java.io.BufferedReader;
 import java.io.*;
 import java.net.Socket;
 import java.util.logging.Logger;
@@ -47,7 +46,7 @@ import java.util.logging.Logger;
 			
 			HTTPRequest req = new HTTPRequest(reqS);
 			
-			//now we pass the httpReq object to httpresponse class for getting the response
+			//now we pass the httpReq object to HTTPResponse class for getting the response
 			
 			HTTPResponse res = new HTTPResponse(req);
 			
@@ -55,8 +54,8 @@ import java.util.logging.Logger;
 			pw.writeBytes(res.response);
 			logger.info("Response sent to user.");
 			
-			pw.close();
 			br.close();
+			pw.close();
 			s.close();
 			logger.info("Socketed is being closed.");
 			} catch (Exception e) {

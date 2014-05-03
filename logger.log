@@ -1,12 +1,26 @@
-May 03, 2014 10:05:42 AM Main runServer
+May 03, 2014 11:03:27 AM Main runServer
 INFO: Server is started...
-May 03, 2014 10:05:42 AM Main acceptRequests
+May 03, 2014 11:03:27 AM Main acceptRequests
 INFO: Server is ready to accept request.
-May 03, 2014 10:05:48 AM HTTPRequest <init>
+May 03, 2014 11:03:31 AM HTTPRequest <init>
 INFO: Successfully parsed the request from user.
-May 03, 2014 10:06:03 AM HTTPResponse <init>
+May 03, 2014 11:03:31 AM HTTPResponse <init>
+WARNING: Error 404: Can't find the requested file.
+May 03, 2014 11:03:31 AM ConnectionHandler run
+WARNING: Error during handling request from user.
+May 03, 2014 11:03:38 AM HTTPRequest <init>
+INFO: Successfully parsed the request from user.
+May 03, 2014 11:03:38 AM HTTPResponse <init>
 INFO: Successfully created response for user.
-May 03, 2014 10:06:04 AM ConnectionHandler run
+May 03, 2014 11:03:38 AM ConnectionHandler run
 INFO: Response sent to user.
-May 03, 2014 10:06:04 AM ConnectionHandler run
+May 03, 2014 11:03:38 AM ConnectionHandler run
+INFO: Socketed is being closed.
+May 03, 2014 11:03:38 AM HTTPRequest <init>
+INFO: Successfully parsed the request from user.
+May 03, 2014 11:03:38 AM HTTPResponse <init>
+INFO: Successfully created response for user.
+May 03, 2014 11:03:38 AM ConnectionHandler run
+INFO: Response sent to user.
+May 03, 2014 11:03:38 AM ConnectionHandler run
 INFO: Socketed is being closed.
