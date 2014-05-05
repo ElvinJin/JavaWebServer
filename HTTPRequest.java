@@ -12,6 +12,7 @@ public class HTTPRequest {
 	String filename;
 	boolean close;
 	private final static Logger logger = Logger.getLogger(Main.class.getName());
+	private boolean PHPRequest;
 	
 	String username = null;
 	String password = null;
@@ -52,4 +53,16 @@ public class HTTPRequest {
 		logger.info("Successfully parsed the request from user.");
 	}
 	
+	public boolean isPHPRequest(String fname){
+		
+		if (fname.contains(".php")) { 
+			System.out.println("This is a PHP file!.");
+			this.PHPRequest = true;
+			return true;
+			} else{
+				this.PHPRequest = false;
+				return false;
+			}
+		
+	}
 }

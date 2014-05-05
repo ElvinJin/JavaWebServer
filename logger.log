@@ -1,46 +1,68 @@
-May 03, 2014 5:52:59 PM Main runServer
+May 04, 2014 9:30:29 PM Main runServer
 INFO: Server is started...
-May 03, 2014 5:52:59 PM Main acceptRequests
+May 04, 2014 9:30:30 PM Main acceptRequests
 INFO: Server is ready to accept request.
-May 03, 2014 5:53:11 PM HTTPRequest <init>
+May 04, 2014 9:30:35 PM HTTPRequest <init>
 INFO: Successfully parsed the request from user.
-May 03, 2014 5:53:11 PM HTTPResponse <init>
+May 04, 2014 9:30:35 PM HTTPResponse <init>
 INFO: Sent the authorization challenge.
-May 03, 2014 5:53:11 PM ConnectionHandler run
+May 04, 2014 9:30:35 PM ConnectionHandler run
 INFO: Response sent to user.
-May 03, 2014 5:53:12 PM HTTPRequest <init>
+May 04, 2014 9:30:36 PM HTTPRequest <init>
 INFO: Successfully parsed the request from user.
-May 03, 2014 5:53:12 PM HTTPResponse <init>
+May 04, 2014 9:30:36 PM HTTPResponse <init>
 INFO: Sent the authorization challenge.
-May 03, 2014 5:53:12 PM ConnectionHandler run
+May 04, 2014 9:30:36 PM ConnectionHandler run
 INFO: Response sent to user.
-May 03, 2014 5:53:13 PM HTTPRequest <init>
+May 04, 2014 9:30:37 PM HTTPRequest <init>
 INFO: Successfully parsed the request from user.
-May 03, 2014 5:53:13 PM HTTPResponse <init>
+May 04, 2014 9:30:37 PM HTTPResponse <init>
 INFO: Sent the authorization challenge.
-May 03, 2014 5:53:13 PM ConnectionHandler run
+May 04, 2014 9:30:37 PM ConnectionHandler run
 INFO: Response sent to user.
-May 03, 2014 5:53:15 PM HTTPRequest <init>
+May 04, 2014 9:30:39 PM HTTPRequest <init>
 INFO: Successfully parsed the request from user.
-May 03, 2014 5:53:15 PM HTTPResponse <init>
-INFO: Sent the authorization challenge.
-May 03, 2014 5:53:15 PM ConnectionHandler run
+May 04, 2014 9:30:39 PM HTTPResponse <init>
+WARNING: Error 404: Can't find the requested file.
+May 04, 2014 9:30:39 PM ConnectionHandler run
 INFO: Response sent to user.
-May 03, 2014 5:53:17 PM HTTPRequest <init>
+May 04, 2014 9:30:41 PM HTTPRequest <init>
 INFO: Successfully parsed the request from user.
-May 03, 2014 5:53:17 PM HTTPResponse <init>
+May 04, 2014 9:30:41 PM ConnectionHandler run
+WARNING: Error during handling request from user.
+May 04, 2014 9:30:41 PM HTTPRequest <init>
+INFO: Successfully parsed the request from user.
+May 04, 2014 9:30:41 PM HTTPResponse <init>
 INFO: Sent the authorization challenge.
-May 03, 2014 5:53:17 PM ConnectionHandler run
+May 04, 2014 9:30:41 PM ConnectionHandler run
 INFO: Response sent to user.
-May 03, 2014 5:53:20 PM HTTPRequest <init>
+May 04, 2014 9:30:42 PM HTTPRequest <init>
 INFO: Successfully parsed the request from user.
-May 03, 2014 5:53:20 PM HTTPResponse <init>
+May 04, 2014 9:30:42 PM HTTPResponse <init>
 INFO: Sent the authorization challenge.
-May 03, 2014 5:53:20 PM ConnectionHandler run
+May 04, 2014 9:30:42 PM ConnectionHandler run
 INFO: Response sent to user.
-May 03, 2014 5:53:22 PM HTTPRequest <init>
+May 04, 2014 9:30:42 PM HTTPRequest <init>
 INFO: Successfully parsed the request from user.
-May 03, 2014 5:53:22 PM HTTPResponse <init>
+May 04, 2014 9:30:42 PM HTTPResponse <init>
 INFO: Sent the authorization challenge.
-May 03, 2014 5:53:22 PM ConnectionHandler run
+May 04, 2014 9:30:42 PM ConnectionHandler run
+INFO: Response sent to user.
+May 04, 2014 9:30:42 PM HTTPRequest <init>
+INFO: Successfully parsed the request from user.
+May 04, 2014 9:30:42 PM HTTPResponse <init>
+INFO: Sent the authorization challenge.
+May 04, 2014 9:30:42 PM ConnectionHandler run
+INFO: Response sent to user.
+May 04, 2014 9:30:43 PM HTTPRequest <init>
+INFO: Successfully parsed the request from user.
+May 04, 2014 9:30:43 PM HTTPResponse <init>
+INFO: Successfully created response static for user.
+May 04, 2014 9:30:43 PM ConnectionHandler run
+INFO: Response sent to user.
+May 04, 2014 9:30:54 PM HTTPRequest <init>
+INFO: Successfully parsed the request from user.
+May 04, 2014 9:30:54 PM HTTPResponse <init>
+INFO: Successfully created response dynamic for user.
+May 04, 2014 9:30:54 PM ConnectionHandler run
 INFO: Response sent to user.

@@ -16,3 +16,7 @@ JavaWebServer/
 	|root/
 		|example.pdf
 		|index.html
+		|test.php
+		|eater.mp3
+		|example2.pdf
+		|not_found_page.html

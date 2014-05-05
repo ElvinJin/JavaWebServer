@@ -16,7 +16,9 @@ public class Main {
 	public static void init(){
 		 try {
 			 fh = new FileHandler("logger.log", false);
-		 } catch (SecurityException | IOException e) {
+		 } catch (IOException e) {
+			 e.printStackTrace();
+		 } catch (SecurityException e){
 			 e.printStackTrace();
 		 }
 		 Logger l = Logger.getLogger("");
